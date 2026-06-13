@@ -75,12 +75,14 @@
     const isDark = saved === 'dark';
     if (isDark) {
       document.body.classList.add('dark-theme');
+    } else if (saved === 'light') {
+      localStorage.setItem('icse-theme', 'paperwhite');
     }
     updateThemeIcon(toggle, !isDark);
 
     toggle.addEventListener('click', () => {
       const nowDark = document.body.classList.toggle('dark-theme');
-      localStorage.setItem('icse-theme', nowDark ? 'dark' : 'light');
+      localStorage.setItem('icse-theme', nowDark ? 'dark' : 'paperwhite');
       updateThemeIcon(toggle, !nowDark);
     });
 

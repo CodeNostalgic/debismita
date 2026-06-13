@@ -4,39 +4,39 @@
    ============================================ */
 
 :root {
-  /* Soft Light Theme (Default) */
-  --bg-app: #faf7f2;
-  --bg-sidebar: #f3ede4;
-  --bg-card: #fffdf9;
-  --bg-card-hover: #f9f5ee;
-  --bg-input: #fffdf9;
+  /* Paperwhite Kindle Theme (Default) */
+  --bg-app: #fefdfb;
+  --bg-sidebar: #f8f7f4;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f7f6f3;
+  --bg-input: #ffffff;
 
-  --color-primary: #b8956a;
-  --color-primary-rgb: 184, 149, 106;
-  --color-secondary: #8b9ec8;
-  --color-secondary-rgb: 139, 158, 200;
-  --color-success: #6fa68e;
-  --color-danger: #c97b6f;
+  --color-primary: #5c4f3d;
+  --color-primary-rgb: 92, 79, 61;
+  --color-secondary: #6e6a65;
+  --color-secondary-rgb: 110, 106, 101;
+  --color-success: #5a6b5e;
+  --color-danger: #8b5e56;
 
-  --text-main: #3d4654;
-  --text-muted: #7d8794;
-  --text-inverse: #fffdf9;
+  --text-main: #3a3835;
+  --text-muted: #716d68;
+  --text-inverse: #fefdfb;
 
-  --border-color: #e5ddd2;
-  --border-focus: #b8956a;
-  --tag-bg: rgba(0, 0, 0, 0.025);
-  --hero-gradient-1: #c4a87a;
-  --hero-gradient-2: #b8a8c8;
-  --hero-gradient-3: #8eb0c4;
-  --video-bg: #2c2926;
+  --border-color: #ebe7e1;
+  --border-focus: #5c4f3d;
+  --tag-bg: rgba(58, 56, 53, 0.03);
+  --hero-gradient-1: #5c4f3d;
+  --hero-gradient-2: #6e6a65;
+  --hero-gradient-3: #5a6b5e;
+  --video-bg: #2a2824;
 
-  --shadow-sm: 0 1px 2px 0 rgba(60, 50, 40, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(60, 50, 40, 0.05), 0 2px 4px -1px rgba(60, 50, 40, 0.03);
-  --shadow-lg: 0 10px 25px -5px rgba(60, 50, 40, 0.06), 0 8px 10px -6px rgba(60, 50, 40, 0.04);
+  --shadow-sm: 0 1px 2px 0 rgba(45, 42, 38, 0.03);
+  --shadow-md: 0 1px 3px 0 rgba(45, 42, 38, 0.04);
+  --shadow-lg: 0 2px 6px 0 rgba(45, 42, 38, 0.05);
   --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Literata', Georgia, 'Palatino Linotype', 'Book Antiqua', serif;
 }
 
 /* Dark Theme (optional toggle) */
@@ -68,6 +68,67 @@ body.dark-theme {
 
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.12);
+}
+
+/* Paperwhite reading refinements (light mode) */
+body:not(.dark-theme) {
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body:not(.dark-theme) .hero-banner {
+  background: var(--bg-card);
+  box-shadow: none;
+}
+
+body:not(.dark-theme) .hero-banner h1,
+body:not(.dark-theme) .hub-hero h1 {
+  background: none !important;
+  -webkit-text-fill-color: var(--text-main) !important;
+  color: var(--text-main) !important;
+}
+
+body:not(.dark-theme) .card {
+  box-shadow: none;
+}
+
+body:not(.dark-theme) .card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border-color);
+}
+
+body:not(.dark-theme) .qa-answer {
+  border-left-color: rgba(var(--color-primary-rgb), 0.35);
+}
+
+body:not(.dark-theme) .analysis-box {
+  background-color: var(--tag-bg);
+  border-color: var(--border-color);
+}
+
+body:not(.dark-theme) .analysis-title {
+  color: var(--color-primary);
+}
+
+body:not(.dark-theme) .progress-bar-fill {
+  background: var(--color-primary);
+}
+
+body:not(.dark-theme) mark.search-match {
+  background: rgba(var(--color-primary-rgb), 0.18);
+  color: var(--text-main);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+body:not(.dark-theme) .theme-card:hover,
+body:not(.dark-theme) .subject-card:hover,
+body:not(.dark-theme) .lit-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(var(--color-primary-rgb), 0.35);
 }
 
 /* BASE LAYOUT */
@@ -345,7 +406,7 @@ section {
 
 /* HERO BANNER */
 .hero-banner {
-  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.1), rgba(139, 158, 200, 0.08));
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.1), rgba(var(--color-secondary-rgb), 0.08));
   border: 1px solid var(--border-color);
   border-radius: 20px;
   padding: 38px 28px;
