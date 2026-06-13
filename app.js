@@ -72,16 +72,16 @@
     if (!toggle) return;
 
     const saved = localStorage.getItem('icse-theme');
-    const isLight = saved === 'light';
-    if (isLight) {
-      document.body.classList.add('light-theme');
-      updateThemeIcon(toggle, true);
+    const isDark = saved === 'dark';
+    if (isDark) {
+      document.body.classList.add('dark-theme');
     }
+    updateThemeIcon(toggle, !isDark);
 
     toggle.addEventListener('click', () => {
-      const nowLight = document.body.classList.toggle('light-theme');
-      localStorage.setItem('icse-theme', nowLight ? 'light' : 'dark');
-      updateThemeIcon(toggle, nowLight);
+      const nowDark = document.body.classList.toggle('dark-theme');
+      localStorage.setItem('icse-theme', nowDark ? 'dark' : 'light');
+      updateThemeIcon(toggle, !nowDark);
     });
 
     function updateThemeIcon(btn, light) {
@@ -286,6 +286,203 @@
     }
   }
 
+  // --- READ ALOUD (line-by-line sections) ---
+  function initReadAloud() {
+    const blocks = document.querySelectorAll('.lit-section-block');
+    if (!blocks.length || !window.speechSynthesis) return;
+
+    const synth = window.speechSynthesis;
+    let activeBlock = null;
+    let activeMode = null;
+    let utteranceChain = null;
+
+    const SPEAKER_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+    const STOP_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>`;
+
+    function chunkText(text, maxLen = 240) {
+      const trimmed = text.replace(/\s+/g, ' ').trim();
+      if (!trimmed) return [];
+      if (trimmed.length <= maxLen) return [trimmed];
+
+      const chunks = [];
+      const sentences = trimmed.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [trimmed];
+      let buf = '';
+
+      sentences.forEach(sentence => {
+        const part = sentence.trim();
+        if (!part) return;
+        if ((buf + ' ' + part).trim().length <= maxLen) {
+          buf = (buf ? buf + ' ' : '') + part;
+        } else {
+          if (buf) chunks.push(buf);
+          if (part.length <= maxLen) {
+            buf = part;
+          } else {
+            let i = 0;
+            while (i < part.length) {
+              chunks.push(part.slice(i, i + maxLen));
+              i += maxLen;
+            }
+            buf = '';
+          }
+        }
+      });
+      if (buf) chunks.push(buf);
+      return chunks;
+    }
+
+    function extractParts(block, mode) {
+      const parts = [];
+
+      if (mode === 'overview') {
+        const title = block.querySelector('.section-toggle-title')?.textContent?.trim();
+        const overview = block.querySelector('.analysis-text')?.innerText?.trim();
+        if (title) parts.push(title + '.');
+        if (overview) parts.push(overview);
+        return parts;
+      }
+
+      block.querySelectorAll('.line-pair').forEach(pair => {
+        const speaker = pair.querySelector('.speaker-badge')?.textContent?.trim();
+        const prefix = speaker && speaker !== 'Stage' ? speaker + ': ' : '';
+
+        if (mode === 'original') {
+          const line = pair.querySelector('.line-original')?.textContent?.trim();
+          if (line) parts.push(prefix + line);
+        } else if (mode === 'translation') {
+          const line = pair.querySelector('.line-translation')?.textContent?.trim();
+          if (line) parts.push(prefix + line.replace(/^→\s*/, ''));
+        }
+      });
+
+      return parts;
+    }
+
+    function clearActiveUI() {
+      document.querySelectorAll('.read-btn.active, .read-stop-btn.visible').forEach(el => {
+        el.classList.remove('active', 'visible');
+        el.setAttribute('aria-pressed', 'false');
+      });
+      activeBlock = null;
+      activeMode = null;
+      utteranceChain = null;
+    }
+
+    function stopReading() {
+      synth.cancel();
+      clearActiveUI();
+    }
+
+    function ensureSectionOpen(block) {
+      const body = block.querySelector('.section-body');
+      const toggle = block.querySelector('.section-toggle');
+      if (!body || !toggle || body.classList.contains('open')) return;
+      body.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.classList.remove('collapsed');
+    }
+
+    function setActiveUI(block, mode, stopBtn) {
+      clearActiveUI();
+      activeBlock = block;
+      activeMode = mode;
+      const btn = block.querySelector(`.read-btn[data-mode="${mode}"]`);
+      if (btn) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      }
+      if (stopBtn) stopBtn.classList.add('visible');
+    }
+
+    function speakParts(block, mode, stopBtn) {
+      const parts = extractParts(block, mode);
+      if (!parts.length) return;
+
+      stopReading();
+      ensureSectionOpen(block);
+      setActiveUI(block, mode, stopBtn);
+
+      const texts = parts.flatMap(p => chunkText(p));
+      let index = 0;
+
+      function speakNext() {
+        if (index >= texts.length || activeBlock !== block || activeMode !== mode) return;
+
+        const utterance = new SpeechSynthesisUtterance(texts[index++]);
+        utterance.rate = 0.92;
+        utterance.lang = 'en-GB';
+
+        const voices = synth.getVoices();
+        const preferred = voices.find(v => v.lang.startsWith('en') && !v.name.toLowerCase().includes('google'));
+        if (preferred) utterance.voice = preferred;
+
+        utterance.onend = () => {
+          if (index < texts.length && activeBlock === block) speakNext();
+          else if (activeBlock === block) stopReading();
+        };
+        utterance.onerror = () => stopReading();
+
+        synth.speak(utterance);
+      }
+
+      utteranceChain = speakNext;
+      if (synth.getVoices().length) speakNext();
+      else synth.addEventListener('voiceschanged', speakNext, { once: true });
+    }
+
+    blocks.forEach(block => {
+      const toggle = block.querySelector('.section-toggle');
+      if (!toggle) return;
+
+      const row = document.createElement('div');
+      row.className = 'section-header-row';
+      toggle.parentNode.insertBefore(row, toggle);
+      row.appendChild(toggle);
+
+      const controls = document.createElement('div');
+      controls.className = 'read-aloud-controls';
+      controls.setAttribute('role', 'group');
+      controls.setAttribute('aria-label', 'Read aloud options');
+      controls.innerHTML = `
+        <button type="button" class="read-btn" data-mode="overview" aria-pressed="false" aria-label="Read section overview aloud">
+          ${SPEAKER_ICON}<span>Overview</span>
+        </button>
+        <button type="button" class="read-btn" data-mode="original" aria-pressed="false" aria-label="Read original Shakespeare lines aloud">
+          ${SPEAKER_ICON}<span>Original</span>
+        </button>
+        <button type="button" class="read-btn" data-mode="translation" aria-pressed="false" aria-label="Read modern translation aloud">
+          ${SPEAKER_ICON}<span>Translation</span>
+        </button>
+        <button type="button" class="read-stop-btn" aria-label="Stop reading aloud" title="Stop">
+          ${STOP_ICON}
+        </button>`;
+      row.appendChild(controls);
+
+      const stopBtn = controls.querySelector('.read-stop-btn');
+
+      controls.querySelectorAll('.read-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const mode = btn.dataset.mode;
+          if (activeBlock === block && activeMode === mode && synth.speaking) {
+            stopReading();
+          } else {
+            speakParts(block, mode, stopBtn);
+          }
+        });
+      });
+
+      stopBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        stopReading();
+      });
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && synth.speaking) stopReading();
+    });
+  }
+
   // --- COLLAPSIBLE LINE-BY-LINE SECTIONS ---
   function initSectionToggles() {
     const toggles = document.querySelectorAll('.section-toggle');
@@ -328,6 +525,7 @@
     initScrollSpy();
     initPrint();
     initSectionToggles();
+    initReadAloud();
   };
 
   // Minimal init for hub pages (theme + mobile header if any)
