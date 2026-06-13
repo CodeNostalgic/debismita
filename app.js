@@ -286,6 +286,37 @@
     }
   }
 
+  // --- COLLAPSIBLE LINE-BY-LINE SECTIONS ---
+  function initSectionToggles() {
+    const toggles = document.querySelectorAll('.section-toggle');
+    if (!toggles.length) return;
+
+    toggles.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = document.getElementById(btn.getAttribute('aria-controls'));
+        if (!body) return;
+        const open = body.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+        btn.classList.toggle('collapsed', !open);
+      });
+    });
+
+    const expandBtn = document.getElementById('expand-sections-btn');
+    if (expandBtn) {
+      let expanded = true;
+      expandBtn.addEventListener('click', () => {
+        expanded = !expanded;
+        document.querySelectorAll('.section-body').forEach(b => b.classList.toggle('open', expanded));
+        document.querySelectorAll('.section-toggle').forEach(b => {
+          b.setAttribute('aria-expanded', expanded);
+          b.classList.toggle('collapsed', !expanded);
+        });
+        const tip = expandBtn.querySelector('.tooltip');
+        if (tip) tip.textContent = expanded ? 'Collapse All' : 'Expand All';
+      });
+    }
+  }
+
   // Public init for full content pages
   window.initStudyPage = function () {
     initQaCards();
@@ -296,6 +327,7 @@
     initMobileNav();
     initScrollSpy();
     initPrint();
+    initSectionToggles();
   };
 
   // Minimal init for hub pages (theme + mobile header if any)
@@ -306,8 +338,8 @@
 
   // Auto-run sensible defaults on DOM ready
   document.addEventListener('DOMContentLoaded', () => {
-    // If the page looks like a rich study page (has .qa-card), initialize full features
-    if (document.querySelector('.qa-card')) {
+    // Rich study pages: Q&A, line-by-line, or searchable content
+    if (document.querySelector('.qa-card') || document.querySelector('.line-pair') || document.getElementById('search-input')) {
       window.initStudyPage();
     } else {
       window.initHubPage();

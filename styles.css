@@ -765,6 +765,125 @@ section {
 
 .quote-analysis-container.open { max-height: 240px; }
 
+/* LINE-BY-LINE STUDY (scene pages) */
+.lit-section-block {
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-card);
+  transition: var(--transition-base);
+}
+
+.lit-section-block:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.35);
+  box-shadow: var(--shadow-md);
+}
+
+.section-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.08), transparent);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-main);
+  transition: var(--transition-base);
+}
+
+.section-toggle:hover {
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.14), transparent);
+}
+
+.section-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.section-num {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+}
+
+.section-toggle-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.section-toggle-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+}
+
+.section-toggle.collapsed .section-toggle-icon {
+  transform: rotate(-90deg);
+}
+
+.section-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.section-body.open {
+  max-height: 8000px;
+}
+
+.section-body > .analysis-box,
+.section-body > .line-pairs {
+  padding: 0 20px 20px;
+}
+
+.line-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.line-pair {
+  padding: 14px 16px;
+  border-radius: 9px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-app);
+  transition: var(--transition-base);
+}
+
+.line-pair:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.3);
+  background: var(--bg-card-hover);
+}
+
+.line-original {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.line-translation {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  padding-left: 14px;
+  border-left: 3px solid rgba(var(--color-primary-rgb), 0.45);
+}
+
 .quote-analysis {
   margin-top: 9px;
   padding: 12px;
