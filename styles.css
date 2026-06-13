@@ -555,6 +555,16 @@ section {
   line-height: 1.55;
 }
 
+.analysis-text.overview-rich p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.analysis-text.overview-rich p + p {
+  margin-top: 12px;
+}
+
 /* TABLES */
 .table-responsive {
   overflow-x: auto;

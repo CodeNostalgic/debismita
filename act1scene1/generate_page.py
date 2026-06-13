@@ -1,7 +1,7 @@
-import json
 import re
 import html
 import openpyxl
+from section_overviews import SECTION_OVERVIEWS
 
 path = r"C:\Projects\myprojects\debismita\act1scene1\act1scene1.xlsx"
 wb = openpyxl.load_workbook(path, data_only=True)
@@ -36,6 +36,15 @@ if current and current["lines"]:
 def esc(s):
     return html.escape(s, quote=True)
 
+
+def render_overview(title, fallback):
+    text = SECTION_OVERVIEWS.get(title, fallback)
+    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+    if not paragraphs:
+        return f"<p>{esc(fallback)}</p>"
+    return "".join(f"<p>{esc(p)}</p>" for p in paragraphs)
+
+
 line_blocks = []
 for i, sec in enumerate(sections):
     sid = f"section-{i+1}"
@@ -59,7 +68,7 @@ for i, sec in enumerate(sections):
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 Section Overview
               </div>
-              <div class="analysis-text">{esc(sec['explanation'])}</div>
+              <div class="analysis-text overview-rich">{render_overview(sec['title'], sec['explanation'])}</div>
             </div>
             <div class="line-pairs">
 {chr(10).join(lines_html)}
