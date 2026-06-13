@@ -872,6 +872,15 @@ section {
   transition: var(--transition-base);
 }
 
+.line-pair .speaker-badge {
+  margin-bottom: 8px;
+}
+
+.line-pair .speaker-badge.stage-direction {
+  background: rgba(99, 102, 241, 0.14);
+  color: var(--color-secondary);
+}
+
 .line-pair:hover {
   border-color: rgba(var(--color-primary-rgb), 0.3);
   background: var(--bg-card-hover);

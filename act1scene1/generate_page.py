@@ -1,37 +1,17 @@
-import re
 import html
-import openpyxl
+from parse_line_by_line import load_sections
 from section_overviews import SECTION_OVERVIEWS
 
-path = r"C:\Projects\myprojects\debismita\act1scene1\act1scene1.xlsx"
-wb = openpyxl.load_workbook(path, data_only=True)
-ws = wb["Sheet1"]
-
 sections = []
-current = {"title": "", "explanation": "", "lines": []}
-
-for row in ws.iter_rows(min_row=2, values_only=True):
-    text, trans, expl = row[0], row[1], row[2]
-    if text == "Actual Text":
-        if current["lines"]:
-            sections.append(current)
-        current = {"title": "", "explanation": "", "lines": []}
-        continue
-    if expl and not current["explanation"]:
-        m = re.match(r"^([^:]+):\s*(.*)$", str(expl))
-        if m:
-            current["title"] = m.group(1).strip()
-            current["explanation"] = m.group(2).strip()
-        else:
-            current["title"] = "Section"
-            current["explanation"] = str(expl)
-    if text and trans:
-        current["lines"].append(
-            {"text": str(text).strip(), "translation": str(trans).strip()}
-        )
-
-if current and current["lines"]:
-    sections.append(current)
+for sec in load_sections():
+    sections.append({
+        "title": sec["title"],
+        "explanation": "",
+        "lines": [
+            {"text": line["text"], "translation": line["translation"], "speaker": line.get("speaker")}
+            for line in sec["lines"]
+        ],
+    })
 
 def esc(s):
     return html.escape(s, quote=True)
@@ -50,7 +30,14 @@ for i, sec in enumerate(sections):
     sid = f"section-{i+1}"
     lines_html = []
     for line in sec["lines"]:
+        speaker = line.get("speaker")
+        speaker_html = ""
+        if speaker and speaker not in ("STAGE",):
+            speaker_html = f'<span class="speaker-badge">{esc(speaker)}</span>'
+        elif speaker == "STAGE":
+            speaker_html = f'<span class="speaker-badge stage-direction">Stage</span>'
         lines_html.append(f"""          <div class="line-pair searchable-card">
+            {speaker_html}
             <p class="line-original">{esc(line['text'])}</p>
             <p class="line-translation">{esc(line['translation'])}</p>
           </div>""")

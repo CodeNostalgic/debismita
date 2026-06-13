@@ -22,11 +22,11 @@ SECTION_OVERVIEWS = {
         "Solanio reinforces Salarino's theory with practical, almost comic details of what worry would look like in daily life. "
         "If he had cargo at sea, he would be \"plucking the grass\" to test wind direction, \"piring in maps\" for safe harbours, and seeing danger in every ordinary object. "
         "These small, human actions make abstract financial risk feel immediate and personal.\n\n"
-        "Together, Salarino and Solanio represent the typical anxious merchant-mind of Renaissance Venice. "
-        "Their speeches build a picture of a society where wealth and danger are inseparable. "
-        "Solanio concludes with confidence: Antonio must be sad because he is thinking about his merchandise. "
-        "The dramatic irony for the audience is that we are about to hear Antonio deny this — which means the true source of his sadness lies elsewhere. "
-        "This exchange also shows how friendship in the play often expresses itself through speculation and concern."
+        "Salarino then takes the stage again for one of the scene's longest speeches. "
+        "He imagines the wind cooling his broth making him shiver with fever, an hourglass reminding him of sandbanks, his ship Andrew sinking, a church stone reminding him of wrecking rocks, and spices and silks spilling into the sea. "
+        "The catalogue of imagined disasters ends with his certainty that Antonio is sad because he is \"thinking upon his merchandise.\"\n\n"
+        "Together, these speeches represent the anxious merchant-mind of Renaissance Venice — a society where wealth and danger are inseparable. "
+        "The dramatic irony is that Antonio will immediately deny this, proving the true source of his sadness lies elsewhere."
     ),
     "Antonio Rejects Their Assumption": (
         "Antonio firmly rejects the theory that his sadness comes from business worries. "
@@ -50,11 +50,11 @@ SECTION_OVERVIEWS = {
     "Arrival of Antonio's Friends": (
         "The stage direction \"Enter Bassanio, Lorenzo, and Gratiano\" marks a turning point. "
         "Until now the conversation has circled Antonio's mood; from here the scene begins to drive the main plot forward. "
-        "Salarino and Solanio take their leave politely, saying they would have stayed to cheer Antonio up if \"worthier friends\" had not arrived.\n\n"
-        "Antonio's reply — \"Your worth is very dear in my regard\" — shows genuine warmth, even in melancholy. "
-        "Bassanio's greeting (\"when shall we laugh?\") hints that the friends have grown distant, perhaps because of Bassanio's financial troubles or Antonio's withdrawn mood. "
-        "The exit of Salarino and Solanio narrows the focus to the inner circle that matters most to the play: Antonio, Bassanio, Lorenzo, and Gratiano. "
-        "This is where Shakespeare quietly establishes the friendship between Antonio and Bassanio as the emotional engine of the entire story — a bond strong enough to lead Antonio to risk his life for Bassanio's happiness."
+        "Solanio announces the arrival of Bassanio, Gratiano, and Lorenzo, and Salarino and Solanio take their leave politely.\n\n"
+        "Antonio values their friendship (\"Your worth is very dear in my regard\") but understands they must attend to business. "
+        "Bassanio's greeting — \"when shall we laugh? Say, when?\" — reveals that the friends have grown distant, and his line \"You grow exceeding strange\" adds a note of hurt. "
+        "Lorenzo arranges to meet at dinner, Bassanio promises \"I will not fail you,\" and Salarino and Solanio exit. "
+        "The stage is now set for the intimate conversation between Antonio, Bassanio, Lorenzo, and Gratiano that will propel the main plot."
     ),
     "Gratiano's Advice About Life": (
         "As Lorenzo prepares to leave Antonio and Bassanio alone, Gratiano pauses to comment on Antonio's appearance. "
