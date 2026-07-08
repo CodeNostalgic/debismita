@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technological Evolution Has Made Students Lazy Thinkers • English Language • ICSE Study Hub</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* Essay reading view refinements */
+    .essay-content {
+      font-size: 1.125rem; /* Kindle Medium default */
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      transition: font-size 0.2s ease;
+    }
+    .essay-content p {
+      margin-bottom: 1.25rem;
+      text-indent: 1.5rem;
+    }
+    .essay-content p:first-of-type {
+      text-indent: 0;
+    }
+    
+    /* Structure highlighting */
+    .essay-content.show-structure .para-intro {
+      border-left: 4px solid var(--color-success);
+      background-color: rgba(var(--color-primary-rgb), 0.03);
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+    }
+    .essay-content.show-structure .para-body {
+      border-left: 4px solid var(--color-secondary);
+      background-color: rgba(var(--color-secondary-rgb), 0.02);
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 10px;
+    }
+    .essay-content.show-structure .para-conclusion {
+      border-left: 4px solid var(--color-danger);
+      background-color: rgba(var(--color-primary-rgb), 0.03);
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 10px;
+    }
+
+    .structure-label {
+      display: none;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .essay-content.show-structure .structure-label {
+      display: block;
+    }
+    .structure-label.intro { color: var(--color-success); }
+    .structure-label.body-p { color: var(--color-secondary); }
+    .structure-label.conclusion { color: var(--color-danger); }
+
+    /* Size Controls */
+    .size-controls {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .btn-size {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+    .btn-size:hover, .btn-size.active {
+      background-color: var(--bg-card-hover);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    /* Vocabulary builder styling */
+    .vocab-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 0.9rem;
+    }
+    .vocab-table th, .vocab-table td {
+      border: 1px solid var(--border-color);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .vocab-table th {
+      background-color: var(--bg-sidebar);
+      color: var(--color-primary);
+      font-family: var(--font-serif);
+      font-weight: 600;
+    }
+    .vocab-word {
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* Custom Switch style */
+    .switch-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 22px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--border-color);
+      transition: .3s;
+      border-radius: 22px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--color-primary);
+    }
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE HEADER -->
+  <div class="mobile-header">
+    <a href="../language.html" class="sidebar-brand">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      English Language
+    </a>
+    <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Navigation Menu">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+
+  <!-- SIDEBAR NAVIGATION -->
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html" class="sidebar-brand">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        ICSE Study Hub
+      </a>
+      <span class="sidebar-subtitle">Class 10 • Language Hub</span>
+      <a href="../language.html" style="font-size:0.75rem;color:var(--color-primary);margin-top:4px;display:inline-flex;align-items:center;gap:4px;text-decoration:none;">
+        ← Language Hub
+      </a>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item"><a href="../language.html#overview"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Hub Overview</a></li>
+      <li class="nav-item"><a href="../language.html#compositions"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Compositions (Essays)</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="screens-killing-imagination.html" style="padding: 6px 10px;">• Screens &amp; Imagination</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="grades-define-intelligence.html" style="padding: 6px 10px;">• Grades &amp; Intelligence</a></li>
+      <li class="nav-item active" style="padding-left: 12px; font-size: 0.8rem;"><a href="#essay-title" style="padding: 6px 10px;">• Technological Evolution &amp; Lazy Thinkers</a></li>
+      <li class="nav-item"><a href="../language.html#letters"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Letter Writing</a></li>
+      <li class="nav-item"><a href="../language.html#comprehension"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Comprehension</a></li>
+      <li class="nav-item"><a href="../language.html#grammar"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Grammar</a></li>
+    </ul>
+
+    <!-- Revision Progress tracker -->
+    <div style="padding:16px; border-top:1px solid var(--border-color);">
+      <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:8px; font-weight:600; display:flex; justify-content:space-between;">
+        <span>Composition Review</span>
+        <span id="progress-percent">0%</span>
+      </div>
+      <div style="background:var(--border-color); height:6px; border-radius:3px; overflow:hidden;">
+        <div id="progress-fill" class="progress-bar-fill" style="width:0%; height:100%; transition: width 0.3s ease;"></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN APP WRAPPER -->
+  <div class="app-container">
+    
+    <!-- TOP STICKY TOOLBAR -->
+    <header>
+      <div class="header-actions">
+        <div style="flex:1;">
+          <h2 style="font-size:1.15rem; font-family:var(--font-serif); color:var(--text-main);">Argumentative Essay Guide</h2>
+        </div>
+        <div class="header-controls">
+          <!-- Text size adjustment controls -->
+          <div class="size-controls" style="margin-right: 8px;">
+            <button class="btn-size" id="btn-size-dec" title="Decrease text size" aria-label="Decrease text size">A-</button>
+            <button class="btn-size active" id="btn-size-normal" title="Default text size" aria-label="Default text size">A</button>
+            <button class="btn-size" id="btn-size-inc" title="Increase text size" aria-label="Increase text size">A+</button>
+          </div>
+          <button class="btn-control" id="theme-toggle" aria-label="Toggle light/dark mode">
+            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <span class="tooltip">Toggle Theme</span>
+          </button>
+          <button class="btn-control" id="print-btn" aria-label="Print Essay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span class="tooltip">Print Essay</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <main>
+      
+      <!-- BREADCRUMBS -->
+      <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <span class="sep">/</span>
+        <a href="../language.html">English Language</a>
+        <span class="sep">/</span>
+        <a href="../language.html#compositions">Compositions</a>
+        <span class="sep">/</span>
+        <span style="color:var(--color-primary);">Technology &amp; Lazy Thinking</span>
+      </div>
+
+      <!-- ESSAY CARD -->
+      <section id="essay-title">
+        <div class="card searchable-card" style="position: relative;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+            <div>
+              <span class="section-badge" style="background:rgba(90,107,94,0.12); color:var(--color-success); margin-bottom:6px; display:inline-block;">Model Essay</span>
+              <h1 style="font-size:2.1rem; font-family:var(--font-serif); margin-top:2px;">Technological Evolution Has Made Students Lazy Thinkers</h1>
+            </div>
+            
+            <div class="switch-container">
+              <span>Structure Highlights</span>
+              <label class="switch">
+                <input type="checkbox" onchange="toggleStructure(this, 'essay-text')">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; font-size:0.82rem; color:var(--text-muted); margin-bottom:18px; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
+            <span><strong>Topic Type:</strong> Argumentative</span>
+            <span>|</span>
+            <span><strong>Word Count:</strong> 330 Words</span>
+            <span>|</span>
+            <span><strong>Reading Time:</strong> ~2 mins</span>
+            <span>|</span>
+            <span><strong>Standard:</strong> ICSE Board Exam</span>
+          </div>
+
+          <!-- Essay Text Panel -->
+          <div id="essay-text" class="essay-content">
+            <div class="para-intro">
+              <div class="structure-label intro">Introduction (Thesis &amp; Topic hook)</div>
+              <p>The rapid advancement of technology has transformed the way students learn. The internet, artificial intelligence, educational apps, and digital libraries have placed an ocean of knowledge at our fingertips. While these innovations have made education more accessible, I believe that excessive dependence on technology is gradually making many students lazy thinkers.</p>
+            </div>
+
+            <div class="para-body">
+              <div class="structure-label body-p">Body Paragraph 1 (Contrast with earlier study methods)</div>
+              <p>Earlier, students visited libraries, referred to several books, and spent time analysing information before arriving at a conclusion. Today, a simple search engine or an AI tool can provide instant answers within seconds. Although this saves time, it often discourages students from questioning, analysing, and thinking independently. Many simply copy information without understanding the concepts behind it.</p>
+            </div>
+
+            <div class="para-body">
+              <div class="structure-label body-p">Body Paragraph 2 (Decline in problem-solving &amp; logical reasoning)</div>
+              <p>Another concern is the decline in problem-solving skills. Whether it is solving mathematical equations, writing essays, or completing projects, students often rely on calculators, online solutions, or AI-generated responses. As a result, they may finish their work quickly but fail to develop logical reasoning and creativity. The habit of finding instant answers weakens the ability to think deeply and solve unfamiliar problems.</p>
+            </div>
+
+            <div class="para-body">
+              <div class="structure-label body-p">Body Paragraph 3 (Decline in attention span &amp; concentration)</div>
+              <p>Technology has also reduced the attention span of many students. Short videos, instant notifications, and endless scrolling encourage the brain to seek quick entertainment rather than sustained concentration. Reading a lengthy chapter or solving a challenging problem now seems difficult for many learners because they have become accustomed to instant gratification.</p>
+            </div>
+
+            <div class="para-body">
+              <div class="structure-label body-p">Body Paragraph 4 (Balanced view / Counter-argument)</div>
+              <p>However, technology itself is not the enemy. When used wisely, it can inspire curiosity and innovation. Virtual laboratories, educational videos, coding platforms, and online courses have enabled millions of students to learn beyond the boundaries of the classroom. The real issue lies in how technology is used. It should assist thinking, not replace it.</p>
+            </div>
+
+            <div class="para-conclusion">
+              <div class="structure-label conclusion">Conclusion (Summary &amp; Balanced Action)</div>
+              <p>In conclusion, technological evolution has brought remarkable opportunities, but students must avoid becoming dependent on it for every answer. True education develops the ability to question, reason, imagine, and create. Technology should be a powerful tool in the hands of thoughtful learners, not a shortcut that weakens the habit of independent thinking. A balanced approach will ensure that students remain both technologically skilled and intellectually strong.</p>
+            </div>
+          </div>
+
+          <!-- Vocabulary Table -->
+          <div class="analysis-box" style="margin-top:20px;">
+            <div class="analysis-title" style="margin-bottom:8px; font-size:1.05rem; display:flex; align-items:center; gap:6px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              Vocabulary Builder
+            </div>
+            <table class="vocab-table">
+              <thead>
+                <tr>
+                  <th>Word</th>
+                  <th>Meaning</th>
+                  <th>Alternative (Synonym)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="vocab-word">Advancement</td>
+                  <td>An improvement or step forward in development</td>
+                  <td>Progress, progression</td>
+                </tr>
+                <tr>
+                  <td class="vocab-word">Accustomed</td>
+                  <td>Familiar with something so that it seems normal</td>
+                  <td>Habituted, used to</td>
+                </tr>
+                <tr>
+                  <td class="vocab-word">Gratification</td>
+                  <td>Pleasure or satisfaction, especially when gained immediately</td>
+                  <td>Satisfaction, fulfillment</td>
+                </tr>
+                <tr>
+                  <td class="vocab-word">Boundaries</td>
+                  <td>Limits or borders of an area or activity</td>
+                  <td>Limits, frontiers</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Self-evaluation Checklist -->
+          <div class="analysis-box" style="margin-top:14px; border-left:4px solid var(--color-success);">
+            <div class="analysis-title" style="margin-bottom:8px; font-size:1.05rem; color:var(--color-success);">
+              Revision Checklist
+            </div>
+            <div class="qa-group" style="margin-top:8px;">
+              <label style="display:flex; align-items:center; gap:10px; font-size:0.88rem; margin-bottom:6px; cursor:pointer;">
+                <input type="checkbox" id="check-essay3-read" class="checklist-checkbox" style="width:16px; height:16px;">
+                <span>Read &amp; analyzed technology vs. critical thinking thesis</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:10px; font-size:0.88rem; margin-bottom:6px; cursor:pointer;">
+                <input type="checkbox" id="check-essay3-vocab" class="checklist-checkbox" style="width:16px; height:16px;">
+                <span>Memorised key vocabulary (Advancement, Gratification, Accustomed)</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:10px; font-size:0.88rem; margin-bottom:6px; cursor:pointer;">
+                <input type="checkbox" id="check-essay3-structure" class="checklist-checkbox" style="width:16px; height:16px;">
+                <span>Analyzed structural flow and balance arguments</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer style="text-align:center; padding:22px 20px 30px; border-top:1px solid var(--border-color); color:var(--text-muted); font-size:0.78rem;">
+      English Language Hub • ICSE Board Notes • Mobile &amp; Tablet Friendly
+    </footer>
+
+  </div>
+
+  <script src="../app.js"></script>
+  <script>
+    // Toggle showing structure elements
+    function toggleStructure(checkbox, textId) {
+      const container = document.getElementById(textId);
+      if (checkbox.checked) {
+        container.classList.add('show-structure');
+      } else {
+        container.classList.remove('show-structure');
+      }
+    }
+
+    // Font size adjuster function
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnDec = document.getElementById('btn-size-dec');
+      const btnNormal = document.getElementById('btn-size-normal');
+      const btnInc = document.getElementById('btn-size-inc');
+      const contents = document.querySelectorAll('.essay-content');
+
+      function removeActive() {
+        btnDec.classList.remove('active');
+        btnNormal.classList.remove('active');
+        btnInc.classList.remove('active');
+      }
+
+      btnDec.addEventListener('click', () => {
+        removeActive();
+        btnDec.classList.add('active');
+        contents.forEach(c => c.style.fontSize = '0.95rem');
+      });
+
+      btnNormal.addEventListener('click', () => {
+        removeActive();
+        btnNormal.classList.add('active');
+        contents.forEach(c => c.style.fontSize = '1.125rem');
+      });
+
+      btnInc.addEventListener('click', () => {
+        removeActive();
+        btnInc.classList.add('active');
+        contents.forEach(c => c.style.fontSize = '1.375rem');
+      });
+    });
+  </script>
+</body>
+</html>

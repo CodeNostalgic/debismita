@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Language • ICSE Study Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- MOBILE HEADER -->
+  <div class="mobile-header">
+    <a href="language.html" class="sidebar-brand">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      English Language
+    </a>
+    <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Navigation Menu">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+
+  <!-- SIDEBAR NAVIGATION -->
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-brand">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        ICSE Study Hub
+      </a>
+      <span class="sidebar-subtitle">Class 10 • Language Hub</span>
+      <a href="index.html" style="font-size:0.75rem;color:var(--color-primary);margin-top:4px;display:inline-flex;align-items:center;gap:4px;text-decoration:none;">
+        ← All Subjects
+      </a>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item active"><a href="#overview"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Hub Overview</a></li>
+      <li class="nav-item"><a href="#compositions"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Compositions (Essays)</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="language/screens-killing-imagination.html" style="padding: 6px 10px;">• Screens &amp; Imagination</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="language/grades-define-intelligence.html" style="padding: 6px 10px;">• Grades &amp; Intelligence</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="language/technological-evolution-lazy-thinkers.html" style="padding: 6px 10px;">• Technological Evolution &amp; Lazy Thinkers</a></li>
+      <li class="nav-item"><a href="#letters"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Letter Writing (Soon)</a></li>
+      <li class="nav-item"><a href="#comprehension"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Comprehension (Soon)</a></li>
+      <li class="nav-item"><a href="#grammar"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Grammar (Soon)</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN APP WRAPPER -->
+  <div class="app-container">
+    
+    <!-- TOP STICKY TOOLBAR -->
+    <header>
+      <div class="header-actions">
+        <div style="flex: 1;">
+          <h2 style="font-size: 1.15rem; font-family: var(--font-serif); color: var(--text-main);">English Language (Paper 1)</h2>
+        </div>
+        <div class="header-controls">
+          <button class="btn-control" id="theme-toggle" aria-label="Toggle light/dark mode">
+            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <span class="tooltip">Toggle Theme</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <main>
+      
+      <!-- BREADCRUMBS -->
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <span style="color:var(--color-primary);">English Language</span>
+      </div>
+
+      <!-- OVERVIEW -->
+      <section id="overview">
+        <div class="hero-banner">
+          <h1>English Language (ICSE)</h1>
+          <p>Class 10 Compositions, Letter Writing, Comprehension, and Grammar. Fully solved board standard samples.</p>
+          <div class="hero-meta">
+            <div class="meta-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Paper: <strong>English Paper 1</strong>
+            </div>
+            <div class="meta-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/></svg>
+              Compositions: <strong>20 Marks</strong>
+            </div>
+            <div class="meta-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Standard: <strong>ICSE Class 10</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 24px;">
+          <h2 style="font-size: 1.35rem; margin-bottom: 8px; color: var(--color-primary);">Study Guide Objectives</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            This hub offers standard model compositions and exam formats based on the latest ICSE class 10 syllabus guidelines. 
+            Click on any available sample essay below to view its full text, toggle structure breakdown highlighting, and review the vocabulary builder.
+          </p>
+        </div>
+      </section>
+
+      <!-- COMPOSITIONS -->
+      <section id="compositions">
+        <div class="section-header">
+          <h2 class="section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            Compositions &amp; Essays
+          </h2>
+          <span class="section-badge">Section A • 20 Marks</span>
+        </div>
+
+        <div class="subject-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 14px; margin-bottom: 24px;">
+          
+          <!-- ESSAY CARD 1 -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 0;">
+            <div>
+              <span class="section-badge" style="background:rgba(90,107,94,0.12); color:var(--color-success); margin-bottom:10px; display:inline-block;">Argumentative Essay</span>
+              <h3 style="font-size:1.3rem; font-family:var(--font-serif); margin-bottom: 10px;">Screens Are Killing Children's Imagination</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem; line-height: 1.5; margin-bottom: 14px;">
+                "In today's digital world, screens have become an inseparable part of children's lives. While technology has undoubtedly made learning easier, excessive screen time is slowly diminishing children's imagination..."
+              </p>
+            </div>
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;">
+                <strong>Word Count:</strong> 352 Words | <strong>Time:</strong> ~2 mins
+              </div>
+              <a href="language/screens-killing-imagination.html" class="action" style="display: inline-block; padding: 8px 16px; background: rgba(var(--color-primary-rgb), 0.15); border-radius: 8px; color: var(--color-primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-align: center;">
+                Read &amp; Analyze Essay →
+              </a>
+            </div>
+          </div>
+
+          <!-- ESSAY CARD 2 -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 0;">
+            <div>
+              <span class="section-badge" style="background:rgba(90,107,94,0.12); color:var(--color-success); margin-bottom:10px; display:inline-block;">Argumentative Essay</span>
+              <h3 style="font-size:1.3rem; font-family:var(--font-serif); margin-bottom: 10px;">Grades Do Not Define a Student's Intelligence</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem; line-height: 1.5; margin-bottom: 14px;">
+                "In almost every school, examination results are eagerly awaited. High grades are celebrated as a sign of intelligence, while poor marks are viewed as failure. However, grades reveal only a part of a student's capabilities..."
+              </p>
+            </div>
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;">
+                <strong>Word Count:</strong> 345 Words | <strong>Time:</strong> ~2 mins
+              </div>
+              <a href="language/grades-define-intelligence.html" class="action" style="display: inline-block; padding: 8px 16px; background: rgba(var(--color-primary-rgb), 0.15); border-radius: 8px; color: var(--color-primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-align: center;">
+                Read &amp; Analyze Essay →
+              </a>
+            </div>
+          </div>
+
+          <!-- ESSAY CARD 3 -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 0;">
+            <div>
+              <span class="section-badge" style="background:rgba(90,107,94,0.12); color:var(--color-success); margin-bottom:10px; display:inline-block;">Argumentative Essay</span>
+              <h3 style="font-size:1.3rem; font-family:var(--font-serif); margin-bottom: 10px;">Technological Evolution Has Made Students Lazy Thinkers</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem; line-height: 1.5; margin-bottom: 14px;">
+                "The rapid advancement of technology has transformed the way students learn. While these innovations have made education more accessible, excessive dependence on technology is making students lazy thinkers..."
+              </p>
+            </div>
+            <div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;">
+                <strong>Word Count:</strong> 330 Words | <strong>Time:</strong> ~2 mins
+              </div>
+              <a href="language/technological-evolution-lazy-thinkers.html" class="action" style="display: inline-block; padding: 8px 16px; background: rgba(var(--color-primary-rgb), 0.15); border-radius: 8px; color: var(--color-primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-align: center;">
+                Read &amp; Analyze Essay →
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- LETTERS (SOON) -->
+      <section id="letters">
+        <div class="section-header">
+          <h2 class="section-title">Letter Writing</h2>
+          <span class="section-badge">Section B • 10 Marks</span>
+        </div>
+        <div class="card">
+          <h3 style="font-family:var(--font-serif); margin-bottom:6px;">ICSE Letter Templates &amp; Solved Samples</h3>
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:14px;">
+            This section will cover the detailed format criteria for both **Formal Letters** (to authorities, editors, principals) 
+            and **Informal Letters** (to friends, parents, relatives). Proper margins, salutations, and subscription spacing are vital for scoring full marks.
+          </p>
+          <a href="#" class="action" onclick="alert('Letter writing notes coming soon! Proper templates are currently being designed.'); return false;">Notify When Ready</a>
+        </div>
+      </section>
+
+      <!-- COMPREHENSION (SOON) -->
+      <section id="comprehension">
+        <div class="section-header">
+          <h2 class="section-title">Comprehension &amp; Précis</h2>
+          <span class="section-badge">Section C • 20 Marks</span>
+        </div>
+        <div class="card">
+          <h3 style="font-family:var(--font-serif); margin-bottom:6px;">Unseen Passages &amp; Précis Formatting</h3>
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:14px;">
+            Detailed guidance on answering question-based comprehension, vocabulary mappings, and drafting the précis (summarising the passage within the 50-word grid).
+          </p>
+          <a href="#" class="action" onclick="alert('Comprehension analysis notes coming soon.'); return false;">Notify When Ready</a>
+        </div>
+      </section>
+
+      <!-- GRAMMAR (SOON) -->
+      <section id="grammar">
+        <div class="section-header">
+          <h2 class="section-title">Grammar &amp; Transformation</h2>
+          <span class="section-badge">Section D • 20 Marks</span>
+        </div>
+        <div class="card">
+          <h3 style="font-family:var(--font-serif); margin-bottom:6px;">Tenses, Prepositions &amp; Sentence Transformation</h3>
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:14px;">
+            Comprehensive practice questions on preposition fillings, verb forms, and transformation rules (Direct-Indirect, Active-Passive, Synthesis of Sentences, and Degree of Comparison).
+          </p>
+          <a href="#" class="action" onclick="alert('Grammar exercises and transformation rules coming soon.'); return false;">Notify When Ready</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer style="text-align:center; padding:22px 20px 30px; border-top:1px solid var(--border-color); color:var(--text-muted); font-size:0.78rem;">
+      English Language Hub • ICSE Board Notes • Mobile &amp; Tablet Friendly
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
