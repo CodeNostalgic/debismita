@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,34 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
   <style>
-    /<em> Essay reading view refinements </em>/
     .essay-content {
-      font-size: 1.125rem; /<em> Kindle Medium default </em>/
+      font-size: 1.125rem;
       line-height: 1.8;
       color: var(--text-main);
       margin-bottom: 24px;
       transition: font-size 0.2s ease;
     }
+
     .essay-content p {
       margin-bottom: 1.25rem;
       text-indent: 1.5rem;
     }
+
     .essay-content p:first-of-type {
       text-indent: 0;
     }
 
-    /<em> Structure highlighting </em>/
     .essay-content.show-structure .para-intro {
       border-left: 4px solid var(--color-success);
       background-color: rgba(var(--color-primary-rgb), 0.03);
       padding: 10px 14px;
       border-radius: 0 8px 8px 0;
     }
+
     .essay-content.show-structure .para-body {
       border-left: 4px solid var(--color-secondary);
       background-color: rgba(var(--color-secondary-rgb), 0.02);
@@ -39,6 +43,7 @@
       border-radius: 0 8px 8px 0;
       margin-top: 10px;
     }
+
     .essay-content.show-structure .para-conclusion {
       border-left: 4px solid var(--color-danger);
       background-color: rgba(var(--color-primary-rgb), 0.03);
@@ -55,19 +60,29 @@
       letter-spacing: 0.05em;
       margin-bottom: 4px;
     }
+
     .essay-content.show-structure .structure-label {
       display: block;
     }
-    .structure-label.intro { color: var(--color-success); }
-    .structure-label.body-p { color: var(--color-secondary); }
-    .structure-label.conclusion { color: var(--color-danger); }
 
-    /<em> Size Controls </em>/
+    .structure-label.intro {
+      color: var(--color-success);
+    }
+
+    .structure-label.body-p {
+      color: var(--color-secondary);
+    }
+
+    .structure-label.conclusion {
+      color: var(--color-danger);
+    }
+
     .size-controls {
       display: flex;
       gap: 6px;
       align-items: center;
     }
+
     .btn-size {
       background-color: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -79,36 +94,40 @@
       cursor: pointer;
       transition: var(--transition-base);
     }
-    .btn-size:hover, .btn-size.active {
+
+    .btn-size:hover,
+    .btn-size.active {
       background-color: var(--bg-card-hover);
       border-color: var(--color-primary);
       color: var(--color-primary);
     }
 
-    /<em> Vocabulary builder styling </em>/
     .vocab-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 14px;
       font-size: 0.9rem;
     }
-    .vocab-table th, .vocab-table td {
+
+    .vocab-table th,
+    .vocab-table td {
       border: 1px solid var(--border-color);
       padding: 10px 12px;
       text-align: left;
     }
+
     .vocab-table th {
       background-color: var(--bg-sidebar);
       color: var(--color-primary);
       font-family: var(--font-serif);
       font-weight: 600;
     }
+
     .vocab-word {
       font-weight: 700;
       color: var(--color-primary);
     }
 
-    /<em> Custom Switch style </em>/
     .switch-container {
       display: flex;
       align-items: center;
@@ -117,17 +136,20 @@
       font-weight: 600;
       color: var(--text-muted);
     }
+
     .switch {
       position: relative;
       display: inline-block;
       width: 44px;
       height: 22px;
     }
+
     .switch input {
       opacity: 0;
       width: 0;
       height: 0;
     }
+
     .slider {
       position: absolute;
       cursor: pointer;
@@ -139,6 +161,7 @@
       transition: .3s;
       border-radius: 22px;
     }
+
     .slider:before {
       position: absolute;
       content: "";
@@ -150,80 +173,184 @@
       transition: .3s;
       border-radius: 50%;
     }
-    input:checked + .slider {
+
+    input:checked+.slider {
       background-color: var(--color-primary);
     }
-    input:checked + .slider:before {
+
+    input:checked+.slider:before {
       transform: translateX(22px);
     }
   </style>
 </head>
+
 <body>
 
   <!-- MOBILE HEADER -->
   <div class="mobile-header">
     <a href="../language.html" class="sidebar-brand">
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
       English Language
     </a>
     <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Navigation Menu">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
     </button>
   </div>
 
-  <!-- SIDEBAR NAVIGATION -->
+    <!-- SIDEBAR NAVIGATION -->
   <aside id="sidebar">
     <div class="sidebar-header">
       <a href="../index.html" class="sidebar-brand">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
         ICSE Study Hub
       </a>
       <span class="sidebar-subtitle">Class 10 • Language Hub</span>
-      <a href="../language.html" style="font-size:0.75rem;color:var(--color-primary);margin-top:4px;display:inline-flex;align-items:center;gap:4px;text-decoration:none;">
+      <a href="../language.html"
+        style="font-size:0.75rem;color:var(--color-primary);margin-top:4px;display:inline-flex;align-items:center;gap:4px;text-decoration:none;">
         ← Language Hub
       </a>
     </div>
     <ul class="nav-list">
-      <li class="nav-item"><a href="../language.html#overview"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Hub Overview</a></li>
-      <li class="nav-item"><a href="../language.html#compositions"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Compositions (Essays)</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="screens-killing-imagination.html" style="padding: 6px 10px;">• Screens Are Killing Children's Imagination</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="grades-define-intelligence.html" style="padding: 6px 10px;">• Grades Do Not Define a Student's Intelligence</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="technological-evolution-lazy-thinkers.html" style="padding: 6px 10px;">• Technological Evolution Has Made Students Lazy Thinkers</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="school-days-are-the-happiest-days-of-our-lives.html" style="padding: 6px 10px;">• School Days Are the Happiest Days of Our Lives</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="the-courage-to-tell-the-truth.html" style="padding: 6px 10px;">• The Courage to Tell the Truth</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="a-wallet-lost-a-lesson-found.html" style="padding: 6px 10px;">• A Wallet Lost</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="a-decision-that-changed-me.html" style="padding: 6px 10px;">• A Decision That Changed Me</a></li>
-      <li class="nav-item active" style="padding-left: 12px; font-size: 0.8rem;"><a href="#essay-title" style="padding: 6px 10px;">• The Joy of Finally Understanding</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="a-race-against-time.html" style="padding: 6px 10px;">• A Race Against Time</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="one-red-light-two-valuable-lessons.html" style="padding: 6px 10px;">• One Red Light</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="a-memorable-annual-sports-day.html" style="padding: 6px 10px;">• A Memorable Annual Sports Day</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="the-little-key-in-grandmothers-garden.html" style="padding: 6px 10px;">• The Little Key in Grandmother's Garden</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="a-scorching-summer-day.html" style="padding: 6px 10px;">• A Scorching Summer Day</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="where-there-is-a-will-there-is-a-way.html" style="padding: 6px 10px;">• Where There Is a Will</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="the-forgotten-station.html" style="padding: 6px 10px;">• The Forgotten Station</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="the-lost-trophy.html" style="padding: 6px 10px;">• The Lost Trophy</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="the-missing-painting.html" style="padding: 6px 10px;">• The Missing Painting</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="a-dream-in-print.html" style="padding: 6px 10px;">• A Dream in Print</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="the-silent-promise.html" style="padding: 6px 10px;">• The Silent Promise</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="when-the-seeds-refused-to-grow.html" style="padding: 6px 10px;">• When the Seeds Refused to Grow</a></li>
-      <li class="nav-item " style="padding-left: 12px; font-size: 0.8rem;"><a href="a-day-inside-other-peoples-minds.html" style="padding: 6px 10px;">• A Day Inside Other People's Minds</a></li>
-      <li class="nav-item"><a href="../language.html#letters"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Letter Writing</a></li>
-      <li class="nav-item"><a href="../language.html#comprehension"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Comprehension</a></li>
-      <li class="nav-item"><a href="../language.html#grammar"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Grammar</a></li>
+      <li class="nav-item"><a href="../language.html#overview"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+          </svg> Hub Overview</a></li>
+      <li class="nav-item"><a href="../language.html#compositions"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+          </svg> Compositions (Essays)</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="screens-killing-imagination.html"
+          style="padding: 6px 10px;">• Screens Are Killing Children's Imagination</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="grades-define-intelligence.html"
+          style="padding: 6px 10px;">• Grades Do Not Define a Student's Intelligence</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="technological-evolution-lazy-thinkers.html"
+          style="padding: 6px 10px;">• Technological Evolution Has Made Students Lazy Thinkers</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="school-days-are-the-happiest-days-of-our-lives.html"
+          style="padding: 6px 10px;">• School Days Are the Happiest Days of Our Lives</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="the-courage-to-tell-the-truth.html"
+          style="padding: 6px 10px;">• The Courage to Tell the Truth</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="a-wallet-lost-a-lesson-found.html"
+          style="padding: 6px 10px;">• A Wallet Lost</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="a-decision-that-changed-me.html"
+          style="padding: 6px 10px;">• A Decision That Changed Me</a></li>
+      <li class="nav-item active" style="padding-left: 12px; font-size: 0.8rem;"><a href="#essay-title"
+          style="padding: 6px 10px;">• The Joy of Finally Understanding</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="a-race-against-time.html"
+          style="padding: 6px 10px;">• A Race Against Time</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="one-red-light-two-valuable-lessons.html"
+          style="padding: 6px 10px;">• One Red Light</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="a-memorable-annual-sports-day.html"
+          style="padding: 6px 10px;">• A Memorable Annual Sports Day</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="the-little-key-in-grandmothers-garden.html"
+          style="padding: 6px 10px;">• The Little Key in Grandmother's Garden</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="a-scorching-summer-day.html"
+          style="padding: 6px 10px;">• A Scorching Summer Day</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="where-there-is-a-will-there-is-a-way.html"
+          style="padding: 6px 10px;">• Where There Is a Will</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="the-forgotten-station.html"
+          style="padding: 6px 10px;">• The Forgotten Station</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="the-lost-trophy.html"
+          style="padding: 6px 10px;">• The Lost Trophy</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="the-missing-painting.html"
+          style="padding: 6px 10px;">• The Missing Painting</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="a-dream-in-print.html"
+          style="padding: 6px 10px;">• A Dream in Print</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="the-silent-promise.html"
+          style="padding: 6px 10px;">• The Silent Promise</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="when-the-seeds-refused-to-grow.html"
+          style="padding: 6px 10px;">• When the Seeds Refused to Grow</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="a-day-inside-other-peoples-minds.html"
+          style="padding: 6px 10px;">• A Day Inside Other People's Minds</a></li>
+      <li class="nav-item"><a href="../language.html#letters"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg> Letter Writing</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/old-clothes-collection-drive.html"
+          style="padding: 6px 10px;">• Letter 1: Old Clothes Collection Drive</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/online-classes-during-covid.html"
+          style="padding: 6px 10px;">• Letter 2: Online Classes During Covid</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/writing-letters-instead-of-e-mails-and-sms.html"
+          style="padding: 6px 10px;">• Letter 3: Writing Letters Instead of E-mails and SMS</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/street-lights-left-switched-on.html"
+          style="padding: 6px 10px;">• Letter 4: Street Lights Left Switched On</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/wastage-of-water-due-to-open-taps.html"
+          style="padding: 6px 10px;">• Letter 5: Wastage of Water Due to Open Taps</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/open-manholes-causing-accidents.html"
+          style="padding: 6px 10px;">• Letter 6: Open Manholes Causing Accidents</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/poor-maintenance-of-the-public-park.html"
+          style="padding: 6px 10px;">• Letter 7: Poor Maintenance of the Public Park</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/complaint-regarding-mobile-phone-robbery.html"
+          style="padding: 6px 10px;">• Letter 8: Complaint Regarding Mobile Phone Robbery</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/complaint-regarding-the-dengue-epidemic.html"
+          style="padding: 6px 10px;">• Letter 9: Complaint Regarding the Dengue Epidemic</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/nuisance-created-by-rickshaw-pullers-and-auto-drivers-near-school.html"
+          style="padding: 6px 10px;">• Letter 10: Nuisance Created by Rickshaw Pullers and Auto Drivers Near School</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/global-warming.html"
+          style="padding: 6px 10px;">• Letter 11: Global Warming</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/profession-you-wish-to-choose-in-future.html"
+          style="padding: 6px 10px;">• Letter 12: Profession You Wish to Choose in Future</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/gift-chosen-for-a-friend.html"
+          style="padding: 6px 10px;">• Letter 13: Gift Chosen for a Friend</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/organising-an-online-drama.html"
+          style="padding: 6px 10px;">• Letter 14: Organising an Online Drama</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/english-grammar-book-not-delivered.html"
+          style="padding: 6px 10px;">• Letter 15: English Grammar Book Not Delivered</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/enquiry-about-hotel-accommodation.html"
+          style="padding: 6px 10px;">• Letter 16: Enquiry About Hotel Accommodation</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/workshop-on-artificial-intelligence.html"
+          style="padding: 6px 10px;">• Letter 17: Workshop on Artificial Intelligence</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/funny-cooking-experiments-during-vacation.html"
+          style="padding: 6px 10px;">• Letter 18: Funny Cooking Experiments During Vacation</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/request-to-start-a-new-school-club.html"
+          style="padding: 6px 10px;">• Letter 19: Request to Start a New School Club</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/held-up-at-the-airport-due-to-an-airline-strike.html"
+          style="padding: 6px 10px;">• Letter 20: Held Up at the Airport Due to an Airline Strike</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/misplaced-train-ticket.html"
+          style="padding: 6px 10px;">• Letter 21: Misplaced Train Ticket</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/choice-of-subjects-for-classes-ix-and-x.html"
+          style="padding: 6px 10px;">• Letter 22: Choice of Subjects for Classes IX and X</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/request-to-avail-the-school-bus-facility.html"
+          style="padding: 6px 10px;">• Letter 23: Request to Avail the School Bus Facility</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/enquiry-to-the-tourism-department-about-a-hill-station.html"
+          style="padding: 6px 10px;">• Letter 24: Enquiry to the Tourism Department About a Hill Station</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/visit-to-an-old-age-home.html"
+          style="padding: 6px 10px;">• Letter 25: Visit to an Old Age Home</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="letters/appeal-to-a-friends-father-regarding-an-organic-farm-visit.html"
+          style="padding: 6px 10px;">• Letter 26: Appeal to a Friend's Father Regarding an Organic Farm Visit</a></li>
+      <li class="nav-item"><a href="../language.html#comprehension"><svg class="nav-icon" viewBox="0 0 24 24" 
+            fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+          </svg> Comprehension (Soon)</a></li>
+      <li class="nav-item"><a href="../language.html#grammar"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg> Grammar (Soon)</a></li>
     </ul>
-
     <!-- Revision Progress tracker -->
     <div style="padding:16px; border-top:1px solid var(--border-color);">
-      <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:8px; font-weight:600; display:flex; justify-content:space-between;">
-        <span>Composition Review</span>
+      <div
+        style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:8px; font-weight:600; display:flex; justify-content:space-between;">
+        <span>Hub Revision</span>
         <span id="progress-percent">0%</span>
       </div>
       <div style="background:var(--border-color); height:6px; border-radius:3px; overflow:hidden;">
-        <div id="progress-fill" class="progress-bar-fill" style="width:0%; height:100%; transition: width 0.3s ease;"></div>
+        <div id="progress-fill" class="progress-bar-fill" style="width:0%; height:100%; transition: width 0.3s ease;">
+        </div>
       </div>
     </div>
   </aside>
-
   <!-- MAIN APP WRAPPER -->
   <div class="app-container">
 
@@ -231,21 +358,31 @@
     <header>
       <div class="header-actions">
         <div style="flex:1;">
-          <h2 style="font-size:1.15rem; font-family:var(--font-serif); color:var(--text-main);">Argumentative Essay Guide</h2>
+          <h2 style="font-size:1.15rem; font-family:var(--font-serif); color:var(--text-main);">Argumentative Essay
+            Guide</h2>
         </div>
         <div class="header-controls">
           <!-- Text size adjustment controls -->
           <div class="size-controls" style="margin-right: 8px;">
-            <button class="btn-size" id="btn-size-dec" title="Decrease text size" aria-label="Decrease text size">A-</button>
-            <button class="btn-size active" id="btn-size-normal" title="Default text size" aria-label="Default text size">A</button>
-            <button class="btn-size" id="btn-size-inc" title="Increase text size" aria-label="Increase text size">A+</button>
+            <button class="btn-size" id="btn-size-dec" title="Decrease text size"
+              aria-label="Decrease text size">A-</button>
+            <button class="btn-size active" id="btn-size-normal" title="Default text size"
+              aria-label="Default text size">A</button>
+            <button class="btn-size" id="btn-size-inc" title="Increase text size"
+              aria-label="Increase text size">A+</button>
           </div>
           <button class="btn-control" id="theme-toggle" aria-label="Toggle light/dark mode">
-            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
             <span class="tooltip">Toggle Theme</span>
           </button>
           <button class="btn-control" id="print-btn" aria-label="Print Essay">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9" />
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+              <rect x="6" y="14" width="12" height="8" />
+            </svg>
             <span class="tooltip">Print Essay</span>
           </button>
         </div>
@@ -269,10 +406,14 @@
       <!-- ESSAY CARD -->
       <section id="essay-title">
         <div class="card searchable-card" style="position: relative;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+          <div
+            style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
             <div>
-              <span class="section-badge" style="background:rgba(90,107,94,0.12); color:var(--color-success); margin-bottom:6px; display:inline-block;">Model Essay</span>
-              <h1 style="font-size:2.1rem; font-family:var(--font-serif); margin-top:2px;">The Joy of Finally Understanding</h1>
+              <span class="section-badge"
+                style="background:rgba(90,107,94,0.12); color:var(--color-success); margin-bottom:6px; display:inline-block;">Model
+                Essay</span>
+              <h1 style="font-size:2.1rem; font-family:var(--font-serif); margin-top:2px;">The Joy of Finally
+                Understanding</h1>
             </div>
 
             <div class="switch-container">
@@ -284,7 +425,8 @@
             </div>
           </div>
 
-          <div style="display:flex; gap:12px; font-size:0.82rem; color:var(--text-muted); margin-bottom:18px; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
+          <div
+            style="display:flex; gap:12px; font-size:0.82rem; color:var(--text-muted); margin-bottom:18px; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
             <span><strong>Topic Type:</strong> Argumentative</span>
             <span>|</span>
             <span><strong>Word Count:</strong> 365 Words</span>
@@ -298,52 +440,113 @@
           <div id="essay-text" class="essay-content">
             <div class="para-intro">
               <div class="structure-label intro">Introduction</div>
-              <p>Albert Einstein once said, "It's not that I'm so smart; it's just that I stay with problems longer." Those words perfectly describe my journey of learning algebra, a subject that once seemed impossible to understand.</p>
+              <p>Albert Einstein once said, "It's not that I'm so smart; it's just that I stay with problems longer."
+                Those words perfectly describe my journey of learning algebra, a subject that once seemed impossible to
+                understand.</p>
             </div>
 
             <div class="para-body">
               <div class="structure-label body-p">Body Paragraph 1</div>
-              <p>At the beginning of the academic year, algebra was my greatest fear. The letters, symbols, and equations looked confusing, and no matter how hard I tried, I kept making mistakes. Every class test ended with disappointing marks. Watching my classmates solve problems effortlessly while I struggled with the basics made me lose confidence. I even began to believe that mathematics was simply not meant for me.</p>
+              <p>At the beginning of the academic year, algebra was my greatest fear. The letters, symbols, and
+                equations looked confusing, and no matter how hard I tried, I kept making mistakes. Every class test
+                ended with disappointing marks. Watching my classmates solve problems effortlessly while I struggled
+                with the basics made me lose confidence. I even began to believe that mathematics was simply not meant
+                for me.</p>
             </div>
 
             <div class="para-body">
               <div class="structure-label body-p">Body Paragraph 2</div>
-              <p>One evening, after another poor test, my father noticed my disappointment. Instead of scolding me, he reminded me that every expert was once a beginner. He encouraged me to focus on understanding one concept at a time instead of worrying about the entire chapter. His words gave me hope.</p>
+              <p>One evening, after another poor test, my father noticed my disappointment. Instead of scolding me, he
+                reminded me that every expert was once a beginner. He encouraged me to focus on understanding one
+                concept at a time instead of worrying about the entire chapter. His words gave me hope.</p>
             </div>
 
             <div class="para-body">
               <div class="structure-label body-p">Body Paragraph 3</div>
-              <p>The next day, I approached my mathematics teacher after class and honestly admitted my difficulties. She patiently explained the concepts using simple real-life examples instead of complicated formulas. She also advised me to practise a few questions every day rather than trying to complete an entire exercise at once.</p>
+              <p>The next day, I approached my mathematics teacher after class and honestly admitted my difficulties.
+                She patiently explained the concepts using simple real-life examples instead of complicated formulas.
+                She also advised me to practise a few questions every day rather than trying to complete an entire
+                exercise at once.</p>
             </div>
 
             <div class="para-body">
               <div class="structure-label body-p">Body Paragraph 4</div>
-              <p>I followed her advice faithfully. At first, progress was slow, and I continued to make errors. However, I refused to give up. Gradually, the equations that once frightened me began to make sense. Solving each problem correctly filled me with confidence and motivated me to work even harder.</p>
+              <p>I followed her advice faithfully. At first, progress was slow, and I continued to make errors. However,
+                I refused to give up. Gradually, the equations that once frightened me began to make sense. Solving each
+                problem correctly filled me with confidence and motivated me to work even harder.</p>
             </div>
 
             <div class="para-body">
               <div class="structure-label body-p">Body Paragraph 5</div>
-              <p>A month later, I scored ninety-one percent in the unit test. The marks certainly made me happy, but the greatest reward was the confidence I had gained. I realised that success was not the result of sudden brilliance but of consistent effort and patient practice.</p>
+              <p>A month later, I scored ninety-one percent in the unit test. The marks certainly made me happy, but the
+                greatest reward was the confidence I had gained. I realised that success was not the result of sudden
+                brilliance but of consistent effort and patient practice.</p>
             </div>
 
             <div class="para-conclusion">
               <div class="structure-label conclusion">Conclusion</div>
-              <p>Looking back, I understand that learning is a journey, not a race. Every challenge teaches us something valuable if we are willing to persevere. My struggle with algebra transformed not only my performance in mathematics but also my attitude towards every difficult task. Today, whenever I face something unfamiliar, I remind myself that patience, determination, and the courage to ask for help can turn even the greatest obstacle into an opportunity for growth.</p>
+              <p>Looking back, I understand that learning is a journey, not a race. Every challenge teaches us something
+                valuable if we are willing to persevere. My struggle with algebra transformed not only my performance in
+                mathematics but also my attitude towards every difficult task. Today, whenever I face something
+                unfamiliar, I remind myself that patience, determination, and the courage to ask for help can turn even
+                the greatest obstacle into an opportunity for growth.</p>
             </div>
 
-</div>
+          </div>
+          <!-- Vocabulary Table -->
+          <div class="analysis-box" style="margin-top:20px;">
+            <div class="analysis-title"
+              style="margin-bottom:8px; font-size:1.05rem; display:flex; align-items:center; gap:6px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+              </svg>
+              Vocabulary Builder
+            </div>
+            <table class="vocab-table">
+              <thead>
+                <tr>
+                  <th>Word</th>
+                  <th>Meaning</th>
+                  <th>Alternative (Synonym)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="vocab-word">Effortlessly</td>
+                  <td>In a manner requiring no physical or mental exertion</td>
+                  <td>Easily, smoothly</td>
+                </tr>
+                <tr>
+                  <td class="vocab-word">Disappointment</td>
+                  <td>Sadness or displeasure caused by unfulfilled hopes</td>
+                  <td>Sadness, letdown</td>
+                </tr>
+                <tr>
+                  <td class="vocab-word">Practice</td>
+                  <td>Repeated exercise in or performance of an activity</td>
+                  <td>Drill, rehearsal</td>
+                </tr>
+                <tr>
+                  <td class="vocab-word">Persevere</td>
+                  <td>Continue in a course of action even in the face of difficulty</td>
+                  <td>Persist, continue</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <!-- Content ends here -->
 
-          </div>
         </div>
-      </section>
+  </div>
+  </section>
 
-    </main>
+  </main>
 
-    <footer style="text-align:center; padding:22px 20px 30px; border-top:1px solid var(--border-color); color:var(--text-muted); font-size:0.78rem;">
-      English Language Hub • ICSE Board Notes • Mobile &amp; Tablet Friendly
-    </footer>
+  <footer
+    style="text-align:center; padding:22px 20px 30px; border-top:1px solid var(--border-color); color:var(--text-muted); font-size:0.78rem;">
+    English Language Hub • ICSE Board Notes • Mobile &amp; Tablet Friendly
+  </footer>
 
   </div>
 
@@ -392,4 +595,5 @@
     });
   </script>
 </body>
+
 </html>

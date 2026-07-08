@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter 5: Wastage of Water Due to Open Taps • English Language • ICSE Study Hub</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    .letter-content {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      transition: font-size 0.2s ease;
+      font-family: var(--font-serif);
+    }
+    .letter-content p {
+      margin-bottom: 1.25rem;
+    }
+    .letter-sender, .letter-date, .letter-receiver, .letter-subject, .letter-salutation, .letter-body-p, .letter-subscription {
+      transition: all 0.2s ease;
+    }
+    /* Structure Highlights styling */
+    .letter-content.show-structure .letter-sender {
+      border-left: 4px solid var(--color-success);
+      background-color: rgba(90, 107, 94, 0.04);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 14px;
+    }
+    .letter-content.show-structure .letter-date {
+      border-left: 4px solid var(--color-primary);
+      background-color: rgba(var(--color-primary-rgb), 0.04);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 14px;
+    }
+    .letter-content.show-structure .letter-receiver {
+      border-left: 4px solid var(--color-secondary);
+      background-color: rgba(110, 106, 101, 0.04);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 14px;
+    }
+    .letter-content.show-structure .letter-subject {
+      border-left: 4px solid var(--color-danger);
+      background-color: rgba(139, 94, 86, 0.04);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .letter-content.show-structure .letter-salutation {
+      border-left: 4px solid var(--color-primary);
+      background-color: rgba(var(--color-primary-rgb), 0.03);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 14px;
+    }
+    .letter-content.show-structure .letter-body-p {
+      border-left: 4px solid var(--color-secondary);
+      background-color: rgba(110, 106, 101, 0.02);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 14px;
+    }
+    .letter-content.show-structure .letter-subscription {
+      border-left: 4px solid var(--color-success);
+      background-color: rgba(90, 107, 94, 0.03);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 14px;
+    }
+    .structure-label {
+      display: none;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .letter-content.show-structure .structure-label {
+      display: block;
+    }
+    .structure-label.sender { color: var(--color-success); }
+    .structure-label.date { color: var(--color-primary); }
+    .structure-label.receiver { color: var(--color-secondary); }
+    .structure-label.subject { color: var(--color-danger); }
+    .structure-label.salutation { color: var(--color-primary); }
+    .structure-label.body-p { color: var(--color-secondary); }
+    .structure-label.subscription { color: var(--color-success); }
+    .size-controls { display: flex; gap: 6px; align-items: center; }
+    .btn-size {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+    .btn-size:hover, .btn-size.active {
+      background-color: var(--bg-card-hover);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .switch-container { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border-color); transition: .3s; border-radius: 22px; }
+    .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+    input:checked+.slider { background-color: var(--color-primary); }
+    input:checked+.slider:before { transform: translateX(22px); }
+  </style>
+</head>
+<body>
+  <!-- MOBILE HEADER -->
+  <div class="mobile-header">
+    <a href="../../language.html" class="sidebar-brand">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      </svg>
+      English Language
+    </a>
+    <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Navigation Menu">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <!-- SIDEBAR NAVIGATION -->
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <a href="../../index.html" class="sidebar-brand">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        ICSE Study Hub
+      </a>
+      <span class="sidebar-subtitle">Class 10 • Language Hub</span>
+      <a href="../../language.html"
+        style="font-size:0.75rem;color:var(--color-primary);margin-top:4px;display:inline-flex;align-items:center;gap:4px;text-decoration:none;">
+        ← Language Hub
+      </a>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item"><a href="../../language.html#overview"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+          </svg> Hub Overview</a></li>
+      <li class="nav-item"><a href="../../language.html#compositions"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+          </svg> Compositions (Essays)</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../screens-killing-imagination.html"
+          style="padding: 6px 10px;">• Screens Are Killing Children's Imagination</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../grades-define-intelligence.html"
+          style="padding: 6px 10px;">• Grades Do Not Define a Student's Intelligence</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../technological-evolution-lazy-thinkers.html"
+          style="padding: 6px 10px;">• Technological Evolution Has Made Students Lazy Thinkers</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../school-days-are-the-happiest-days-of-our-lives.html"
+          style="padding: 6px 10px;">• School Days Are the Happiest Days of Our Lives</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../the-courage-to-tell-the-truth.html"
+          style="padding: 6px 10px;">• The Courage to Tell the Truth</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../a-wallet-lost-a-lesson-found.html"
+          style="padding: 6px 10px;">• A Wallet Lost</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../a-decision-that-changed-me.html"
+          style="padding: 6px 10px;">• A Decision That Changed Me</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../the-joy-of-finally-understanding.html"
+          style="padding: 6px 10px;">• The Joy of Finally Understanding</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../a-race-against-time.html"
+          style="padding: 6px 10px;">• A Race Against Time</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../one-red-light-two-valuable-lessons.html"
+          style="padding: 6px 10px;">• One Red Light</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../a-memorable-annual-sports-day.html"
+          style="padding: 6px 10px;">• A Memorable Annual Sports Day</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../the-little-key-in-grandmothers-garden.html"
+          style="padding: 6px 10px;">• The Little Key in Grandmother's Garden</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../a-scorching-summer-day.html"
+          style="padding: 6px 10px;">• A Scorching Summer Day</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../where-there-is-a-will-there-is-a-way.html"
+          style="padding: 6px 10px;">• Where There Is a Will</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../the-forgotten-station.html"
+          style="padding: 6px 10px;">• The Forgotten Station</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../the-lost-trophy.html"
+          style="padding: 6px 10px;">• The Lost Trophy</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../the-missing-painting.html"
+          style="padding: 6px 10px;">• The Missing Painting</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../a-dream-in-print.html"
+          style="padding: 6px 10px;">• A Dream in Print</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../the-silent-promise.html"
+          style="padding: 6px 10px;">• The Silent Promise</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../when-the-seeds-refused-to-grow.html"
+          style="padding: 6px 10px;">• When the Seeds Refused to Grow</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="../a-day-inside-other-peoples-minds.html"
+          style="padding: 6px 10px;">• A Day Inside Other People's Minds</a></li>
+      <li class="nav-item"><a href="../../language.html#letters"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg> Letter Writing</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="old-clothes-collection-drive.html"
+          style="padding: 6px 10px;">• Letter 1: Old Clothes Collection Drive</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="online-classes-during-covid.html"
+          style="padding: 6px 10px;">• Letter 2: Online Classes During Covid</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="writing-letters-instead-of-e-mails-and-sms.html"
+          style="padding: 6px 10px;">• Letter 3: Writing Letters Instead of E-mails and SMS</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="street-lights-left-switched-on.html"
+          style="padding: 6px 10px;">• Letter 4: Street Lights Left Switched On</a></li>
+      <li class="nav-item active" style="padding-left: 12px; font-size: 0.8rem;"><a href="#letter-title"
+          style="padding: 6px 10px;">• Letter 5: Wastage of Water Due to Open Taps</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="open-manholes-causing-accidents.html"
+          style="padding: 6px 10px;">• Letter 6: Open Manholes Causing Accidents</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="poor-maintenance-of-the-public-park.html"
+          style="padding: 6px 10px;">• Letter 7: Poor Maintenance of the Public Park</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="complaint-regarding-mobile-phone-robbery.html"
+          style="padding: 6px 10px;">• Letter 8: Complaint Regarding Mobile Phone Robbery</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="complaint-regarding-the-dengue-epidemic.html"
+          style="padding: 6px 10px;">• Letter 9: Complaint Regarding the Dengue Epidemic</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="nuisance-created-by-rickshaw-pullers-and-auto-drivers-near-school.html"
+          style="padding: 6px 10px;">• Letter 10: Nuisance Created by Rickshaw Pullers and Auto Drivers Near School</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="global-warming.html"
+          style="padding: 6px 10px;">• Letter 11: Global Warming</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="profession-you-wish-to-choose-in-future.html"
+          style="padding: 6px 10px;">• Letter 12: Profession You Wish to Choose in Future</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="gift-chosen-for-a-friend.html"
+          style="padding: 6px 10px;">• Letter 13: Gift Chosen for a Friend</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="organising-an-online-drama.html"
+          style="padding: 6px 10px;">• Letter 14: Organising an Online Drama</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="english-grammar-book-not-delivered.html"
+          style="padding: 6px 10px;">• Letter 15: English Grammar Book Not Delivered</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="enquiry-about-hotel-accommodation.html"
+          style="padding: 6px 10px;">• Letter 16: Enquiry About Hotel Accommodation</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="workshop-on-artificial-intelligence.html"
+          style="padding: 6px 10px;">• Letter 17: Workshop on Artificial Intelligence</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="funny-cooking-experiments-during-vacation.html"
+          style="padding: 6px 10px;">• Letter 18: Funny Cooking Experiments During Vacation</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="request-to-start-a-new-school-club.html"
+          style="padding: 6px 10px;">• Letter 19: Request to Start a New School Club</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="held-up-at-the-airport-due-to-an-airline-strike.html"
+          style="padding: 6px 10px;">• Letter 20: Held Up at the Airport Due to an Airline Strike</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="misplaced-train-ticket.html"
+          style="padding: 6px 10px;">• Letter 21: Misplaced Train Ticket</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="choice-of-subjects-for-classes-ix-and-x.html"
+          style="padding: 6px 10px;">• Letter 22: Choice of Subjects for Classes IX and X</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="request-to-avail-the-school-bus-facility.html"
+          style="padding: 6px 10px;">• Letter 23: Request to Avail the School Bus Facility</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="enquiry-to-the-tourism-department-about-a-hill-station.html"
+          style="padding: 6px 10px;">• Letter 24: Enquiry to the Tourism Department About a Hill Station</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="visit-to-an-old-age-home.html"
+          style="padding: 6px 10px;">• Letter 25: Visit to an Old Age Home</a></li>
+      <li class="nav-item" style="padding-left: 12px; font-size: 0.8rem;"><a href="appeal-to-a-friends-father-regarding-an-organic-farm-visit.html"
+          style="padding: 6px 10px;">• Letter 26: Appeal to a Friend's Father Regarding an Organic Farm Visit</a></li>
+      <li class="nav-item"><a href="../../language.html#comprehension"><svg class="nav-icon" viewBox="0 0 24 24" 
+            fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zm20 0h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+          </svg> Comprehension (Soon)</a></li>
+      <li class="nav-item"><a href="../../language.html#grammar"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" 
+            stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg> Grammar (Soon)</a></li>
+    </ul>
+    <!-- Revision Progress tracker -->
+    <div style="padding:16px; border-top:1px solid var(--border-color);">
+      <div
+        style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:8px; font-weight:600; display:flex; justify-content:space-between;">
+        <span>Hub Revision</span>
+        <span id="progress-percent">0%</span>
+      </div>
+      <div style="background:var(--border-color); height:6px; border-radius:3px; overflow:hidden;">
+        <div id="progress-fill" class="progress-bar-fill" style="width:0%; height:100%; transition: width 0.3s ease;">
+        </div>
+      </div>
+    </div>
+  </aside>
+  <!-- MAIN APP WRAPPER -->
+  <div class="app-container">
+    <header>
+      <div class="header-actions">
+        <div style="flex:1;">
+          <h2 style="font-size:1.15rem; font-family:var(--font-serif); color:var(--text-main);">Letter Writing Guide</h2>
+        </div>
+        <div class="header-controls">
+          <div class="size-controls" style="margin-right: 8px;">
+            <button class="btn-size" id="btn-size-dec" title="Decrease text size">A-</button>
+            <button class="btn-size active" id="btn-size-normal" title="Default text size">A</button>
+            <button class="btn-size" id="btn-size-inc" title="Increase text size">A+</button>
+          </div>
+          <button class="btn-control" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a>
+        <span class="sep">/</span>
+        <a href="../../language.html">English Language</a>
+        <span class="sep">/</span>
+        <a href="../../language.html#letters">Letter Writing</a>
+        <span class="sep">/</span>
+        <span style="color:var(--color-primary);">Letter 5</span>
+      </div>
+      <section id="letter-title">
+        <div class="card searchable-card" style="position: relative;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+            <div>
+              <span class="section-badge" style="background:rgba(90,107,94,0.12); color:var(--color-success); margin-bottom:6px; display:inline-block;">Model Formal Letter</span>
+              <h1 style="font-size:2.1rem; font-family:var(--font-serif); margin-top:2px;">Letter 5: Wastage of Water Due to Open Taps</h1>
+            </div>
+            <div class="switch-container">
+              <span>Structure Highlights</span>
+              <label class="switch">
+                <input type="checkbox" onchange="toggleStructure(this, 'letter-text')">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; font-size:0.82rem; color:var(--text-muted); margin-bottom:18px; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
+            <span><strong>Format:</strong> Formal</span>
+            <span>|</span>
+            <span><strong>Word Count:</strong> 183 Words</span>
+            <span>|</span>
+            <span><strong>Reading Time:</strong> ~1 mins</span>
+            <span>|</span>
+            <span><strong>Standard:</strong> ICSE Board Exam</span>
+          </div>
+          <!-- Letter Content -->
+          <div id="letter-text" class="letter-content">
+            <div class="letter-sender">
+              <div class="structure-label sender">Sender's Address</div>
+              34, Lake View Road<br>Kolkata – 700029
+            </div>
+            <div class="letter-date">
+              <div class="structure-label date">Date</div>
+              8 July 2026
+            </div>
+            <div class="letter-receiver">
+              <div class="structure-label receiver">Recipient's Address</div>
+              To<br>The Municipal Commissioner<br>Kolkata Municipal Corporation<br>Kolkata – 700001
+            </div>
+            <div class="letter-subject">
+              <div class="structure-label subject">Subject Line</div>
+              Subject: Complaint regarding wastage of water through unattended public taps
+            </div>
+            <div class="letter-salutation">
+              <div class="structure-label salutation">Salutation</div>
+              Sir,
+            </div>
+            <div class="letter-body">
+              <div class="letter-body-p">
+                <div class="structure-label body-p">Body Paragraph</div>
+                <p>Through this letter, I wish to draw your attention to the alarming wastage of water in our locality. Several public taps installed near the market and community park are frequently left open throughout the day, resulting in a continuous flow of clean drinking water.</p>
+              </div>
+              <div class="letter-body-p">
+                <div class="structure-label body-p">Body Paragraph</div>
+                <p>Water is one of our most precious natural resources, yet this careless practice causes thousands of litres to be wasted daily. During the summer months, many areas experience water shortages, making this unnecessary wastage even more unfortunate. Besides depleting valuable resources, the overflowing water accumulates on the roads, creating muddy surroundings and providing breeding grounds for mosquitoes.</p>
+              </div>
+              <div class="letter-body-p">
+                <div class="structure-label body-p">Body Paragraph</div>
+                <p>I request the Municipal Corporation to arrange regular inspections of these public taps and repair any damaged ones immediately. Automatic self-closing taps may also be installed to minimise wastage. Warning notices should be displayed, and residents should be encouraged to report leaking taps. Awareness campaigns in schools and residential areas would also help develop a sense of responsibility among citizens.</p>
+              </div>
+              <div class="letter-body-p">
+                <div class="structure-label body-p">Body Paragraph</div>
+                <p>I sincerely hope the authorities will take immediate steps to conserve water and ensure its proper use for the benefit of all.</p>
+              </div>
+            </div>
+            <div class="letter-subscription">
+              <div class="structure-label subscription">Subscription &amp; Signature</div>
+              Thanking you.<br><br>Yours faithfully,<br><br>Aman Gupta
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer style="text-align:center; padding:22px 20px 30px; border-top:1px solid var(--border-color); color:var(--text-muted); font-size:0.78rem;">
+      English Language Hub • ICSE Board Notes • Mobile &amp; Tablet Friendly
+    </footer>
+  </div>
+  <script src="../../app.js"></script>
+  <script>
+    function toggleStructure(checkbox, textId) {
+      const container = document.getElementById(textId);
+      if (checkbox.checked) { container.classList.add('show-structure'); }
+      else { container.classList.remove('show-structure'); }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnDec = document.getElementById('btn-size-dec');
+      const btnNormal = document.getElementById('btn-size-normal');
+      const btnInc = document.getElementById('btn-size-inc');
+      const contents = document.querySelectorAll('.letter-content');
+      function removeActive() {
+        btnDec.classList.remove('active');
+        btnNormal.classList.remove('active');
+        btnInc.classList.remove('active');
+      }
+      btnDec.addEventListener('click', () => {
+        removeActive(); btnDec.classList.add('active');
+        contents.forEach(c => c.style.fontSize = '0.95rem');
+      });
+      btnNormal.addEventListener('click', () => {
+        removeActive(); btnNormal.classList.add('active');
+        contents.forEach(c => c.style.fontSize = '1.125rem');
+      });
+      btnInc.addEventListener('click', () => {
+        removeActive(); btnInc.classList.add('active');
+        contents.forEach(c => c.style.fontSize = '1.375rem');
+      });
+    });
+  </script>
+</body>
+</html>
